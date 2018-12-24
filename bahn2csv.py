@@ -33,7 +33,8 @@ def read_pdf(path):
 
 rows = [read_pdf(pdf) for pdf in os.listdir('.') if pdf[-3:] == 'pdf']
 csvout = csv.writer(open('bahnfahrten.csv', 'w', newline=''), delimiter=';')
-print(rows)
+# add header
+csvout.writerow(["ticket_id", "date"])
 for row in rows:
     if len(row[1]) == 2:
         for date in row[1]:
